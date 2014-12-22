@@ -26,6 +26,12 @@ channel.on('shutdown', function() {
 	channel.removeAllListeners('broadcast');
 });
 
+channel.on('join', function(id, client) {
+	var welcome = "Welcome!\n"
+		+ 'Guests online: ' + this.listeners('broadcast').length;
+	client.write(welcome + "\n");
+});
+
 var server = net.createServer(function(client) {
 	var id = client.remoteAddress + ':' + client.remotePort;
 	
@@ -34,9 +40,6 @@ var server = net.createServer(function(client) {
   	channel.emit('join', id, client);
   	// End added to work in Mac OS
 
-	client.on('connect', function() {
-		channel.emit('join', id, client);
-	});
 	client.on('data', function(data) {
 		data = data.toString();
 		if (data == "shutdown\r\n") {
