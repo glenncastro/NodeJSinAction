@@ -1,11 +1,11 @@
-To test todo.js, type the following in the terminal:
+To test todo.js, type the following in the terminal:<br>
 
-POST:
-$ curl -d 'buy groceries' http://localhost:3000
-$ curl -d 'buy node in action' http://localhost:3000
+POST: <br>
+$ curl -d 'buy groceries' http://localhost:3000 <br>
+$ curl -d 'buy node in action' http://localhost:3000 <br>
 
-GET:
-$ curl http://localhost:3000
+GET: <br>
+$ curl http://localhost:3000 <br>
 
-DELETE:
-$ curl -X DELETE http://localhost:3000/0
+DELETE: <br>
+$ curl -X DELETE http://localhost:3000/0 <br>
