@@ -1,6 +1,17 @@
 // Multiple error-handling middleware components
 // Listings 6.13 - 6.14
 
+var api = connect()
+	.use(users)
+	.use(pets)
+	.use(errorHandler);
+
+var app = connect()
+	.use(hello)
+	.use('/api', api)
+	.use(errorPage)
+	.listen(3000);
+
 // Implementing the hello middleware component
 function hello(req, res, next) {
 	if (req.url.match(/^\/hello/)) {
